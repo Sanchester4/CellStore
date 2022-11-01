@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ClientController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('productPage.html', function () {
+    return view('productPage');
+});
+
+Route::get('profile.html', function () {
+    return view('user');
+});
+
+Route::get('/profile', [ClientController::class, 'getProfile'])->name('profile');
+
