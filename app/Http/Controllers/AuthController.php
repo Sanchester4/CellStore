@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -29,36 +28,42 @@ class AuthController extends Controller
             }
             $request -> session() -> put('loginId', $user -> id);
             Auth::login($user);
-            return view('index');
-            // if($user->hasRole('user')){
-            //     return redirect()->route('projectStudent');
-            // }
-            // else if($user->hasRole('teacher')){
-            //     return redirect()->route('getProjects');
-            // }
-            // else{
-            //     return redirect()->route('getStudents');}
+             if($user->hasRole('user')){
+                return redirect()->route('index');
+            }
+            else if($user->hasRole('admin')){
+                // return redirect()->route('Admin.dashboard');
+                return redirect()->route('dashboard');
+            }
+            else{
+                return redirect()->route('404');}
+                return view('index');
         }
+
                
         return view('login');
     }
 
     public function register(Request $request)
     {
+        $user = Auth::user();
+        $user = new User;
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        
         $hashed = Hash::make($request->password);
         $request->merge([
             'password' => $hashed,
         ]);
-        $user = User::create(request(['name', 'email', 'password']));
-        
+        $user->name = $request->name;
+        $user->password = $request->password;
+        $user->email = $request->email;
+        $user->assignRole('user');
+        $user->save();
+        // $user = User::create(request(['name', 'email', 'password']));
         auth()->login($user);
-        
         return view('index');
     }
      

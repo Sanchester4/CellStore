@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('phones', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->timestamps();
             $table->string("title");
+            $table->string("tempUrl");
+            $table->float("price");
             $table->string("producedBy");
             $table->integer("prodYear");
             $table->string("color");
@@ -24,7 +26,7 @@ return new class extends Migration
             $table->integer("romSize");
             $table->integer("mainCameraPx");
             $table->integer("frontCameraPx");
-            $table->longtext("description")->nullable();
+            $table->longtext("description")->nullable();  
         });
     }
 
