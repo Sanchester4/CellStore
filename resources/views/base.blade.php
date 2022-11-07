@@ -20,7 +20,7 @@
             <!-- Navbar Section-->
     <nav class="navbar">
         <div class="navbar__container">
-          <a href="#home" id="navbar__logo"
+          <a href="/" id="navbar__logo"
             ><ion-icon name="cut-outline"></ion-icon>CellStore
           </a>
           <div class="navbar__toggle" id="mobile-menu">
@@ -30,7 +30,7 @@
           </div>
           <ul class="navbar__menu">
             <li class="navbar__item">
-              <a href="products.html" class="navbar__links" id="products-page"
+              <a href="shop" class="navbar__links" id="products-page"
                 ><i class="fa-brands fa-product-hunt"></i> Products</a
               >
             </li>
@@ -39,21 +39,23 @@
                 ><i class="fas fa-store"></i> Cart</a
               >
             </li>
-            <li class="navbar_item">
-              <a href="{{ route('profile') }}" class="navbar__links" id="contac-page"
-                ><i class="fa fa-user"></i> Profile</a
-              >
-            </li>
-  
+            @if (Auth::guest())
             <li class="navbar_btn">
-              <a href="login.html" class="button" id="signin-page"
-                ><i class="fa-solid fa-right-to-bracket"></i> </a>
-            </li>
-            <li class="navbar_btn">
-                <a href="logout.html" class="button" id="signup-page"
-                  ><i class="fa fa-power-off"></i
-                ></a>
+                <a href="{{ route('login') }}" class="button" id="signin-page"
+                  >Login</a>
               </li>
+        @else
+            {{-- {{ Auth::user()->name }} --}}
+            <li class="navbar_item">
+                <a href="{{ route('profile') }}" class="navbar__links" id="contac-page"
+                  ><i class="fa fa-user"></i> Profile</a
+                >
+              </li>
+            <form action="{{ route('logout') }}" method="post" style="display:contents">
+                @csrf
+                <button type="submit" class="btn btn-primary btn-block" style="text-size: 14px">Logout</button>
+              </form>
+        @endif
           </ul>
         </div>
       </nav>

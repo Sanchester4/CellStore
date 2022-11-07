@@ -4,8 +4,8 @@ window.onscroll=function(){
   if(startProductBarPos<0)startProductBarPos=findPosY(bar);
 
   if(pageYOffset>startProductBarPos){
-    bar.style.position='sticky';
-    bar.style.top=0;
+    bar.style.position='fixed';
+    bar.style.top=5;
   }else{
     bar.style.position='relative';
   }
