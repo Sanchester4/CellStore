@@ -27,6 +27,8 @@ return new class extends Migration
             $table->integer("mainCameraPx");
             $table->integer("frontCameraPx");
             $table->longtext("description")->nullable();  
+            $table->string("deliveryMethod")->nullable();
+            $table->integer("stockQuantity")->nullable();
         });
     }
 

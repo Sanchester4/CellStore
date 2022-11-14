@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,10 +20,6 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('index');});
 
-    //Route to get the shop page
-    Route::get('shop', function () {
-        return view('productPage');
-    });
     //Route to get the profile page
     Route::get('profile.html', function () {
         return view('user');
@@ -46,6 +43,20 @@ Route::get('/', function () {
     Route::get('/profile', [ClientController::class, 'getProfile'])->name('profile');
     //Route to call the logout function 
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('shop', [ProductController::class, 'getProductsShop'])->name('getProductsShop');
+
+    Route::get('/product', function () {
+        return view('singleProductPage');
+    });
+    
+    Route::get('/profile', [ClientController::class, 'getProfile'])->name('profile');
+
+    Route::get('/shop/product/{id}', [ProductController::class, 'getProductById'])->name('getProductById'); 
+
+    Route::get('/cart', [CartController::class, 'getCart'])->name('getCart');
+    Route::post('/addToCart', [ClientController::class, 'addToCart'])->name('addToCart');
+
+
 
 Route::group(['middleware' => ['role:user']], function () {
 
@@ -53,19 +64,19 @@ Route::group(['middleware' => ['role:user']], function () {
     Route::get('profile.html', function () {
         return view('user');
     });
- 
-    Route::get('/profile', [ClientController::class, 'getProfile'])->name('profile');
+
+    
     //Route to call the logout function 
     //Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    //::get('/crud', [AdminController::class, 'dashboard'])->name('crud');
     Route::post('/addPhone', [ProductController::class, 'storeNewPhone']);
-    // Route::get('/crud', function () {
-    //     return view('Admin.crud');
-    // });
-
     Route::get('/crud', [ProductController::class, 'showProducts'])->name('getProducts');
-    Route::post('/delete/{id}', [AdminController::class, 'deletePhone'])->name('deleteProduct'); 
+    Route::post('/delete/{id}', [AdminController::class, 'deletePhone'])->name('deleteProduct');
+    Route::post('/updatePhone', [ProductController::class, 'updatePhone']);
+
+
 });

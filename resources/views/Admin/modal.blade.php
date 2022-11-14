@@ -8,7 +8,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="?id={{$phone->id}}" method="post">
+          <form action="/updatePhone" method="post">
             @csrf
             <div class="form-group">
               <input type="text" class="form-control" name="name" value="{{$phone->title}}" placeholder="Phone Name">
@@ -39,6 +39,9 @@
             </div>
             <div class="form-group">
               <input type="text" class="form-control" name="secondCamera" value="{{$phone->frontCameraPx}}" placeholder="Frontal Camera Px">
+            </div>
+            <div class="form-group" style="display:none;">
+              <input type="text" class="form-control" name="secondCamera" value="{{$phone->id}}" placeholder="Frontal Camera Px">
             </div>
             </div>
               <div class="modal-footer">
@@ -71,3 +74,4 @@
       </div>
     </div>
   </div>
+

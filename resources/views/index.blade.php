@@ -91,8 +91,8 @@
         </div class="brand-item"></div>
        </div>
     </div>
-    <div class="footer">
-    </div>
+    {{-- <div class="footer">
+    </div> --}}
   </div>
       <script src="https://kit.fontawesome.com/c2a1454648.js" crossorigin="anonymous"></script>
 @endsection

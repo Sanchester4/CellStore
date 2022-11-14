@@ -29,11 +29,11 @@ class AuthController extends Controller
             $request -> session() -> put('loginId', $user -> id);
             Auth::login($user);
              if($user->hasRole('user')){
-                return redirect()->route('index');
+                return view('index');
             }
             else if($user->hasRole('admin')){
-                // return redirect()->route('Admin.dashboard');
-                return redirect()->route('dashboard');
+                return redirect()->route('getProducts');
+                //return redirect()->route('dashboard');
             }
             else{
                 return redirect()->route('404');}

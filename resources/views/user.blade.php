@@ -92,7 +92,5 @@
  //     }
  //   }
  // </script>
- {{-- <script src="{{asset('js/addImg.js')}}"></script>
- <script src="{{asset('jsStudent/app.js')}}"></script> --}}
-
+<script src="https://kit.fontawesome.com/c2a1454648.js" crossorigin="anonymous"> </script>
 @endsection

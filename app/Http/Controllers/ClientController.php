@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Html\FormFacade;
@@ -15,9 +16,24 @@ class ClientController extends Controller
      public function getProfile(){
 
      $id = Auth::id();
-     $users = User::where('id', $id) -> get();
-     return view ('user', compact('users'));
+     $user = User::where('id', $id) -> get();
+     return view ('user', compact('user'));
+     }
 
+     function addToCart(Request $request)
+     {
+        if($request->session()->has('user'))
+        {
+            dd($request);
+            $cart = new Cart();
+            $cart->user_id = $request->session('user', 'id');
+            $cart->user_id = $request->product_id;
+            $cart->save();
+            return redirect()->back()->with('message','Project has been created successfully.');
+        }
+        else{
+            return redirect->route('login');
+        }
      }
 
     // public function showProjects(){

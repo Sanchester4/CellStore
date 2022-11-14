@@ -28,11 +28,11 @@
               <span class="text-checkbox">Remember me</span>
             </label>
             <p><a href="#" id="forgot-password" page="./ForgotPassword">Forgot your password?</a></p>
+            <p><a href="register.html" id="register-link">Don't have an account?</a></p>
           </div>
           <button id="login-submit" type="submit" class="btn btn-primary">Login</button>
-          <p><a href="register.html" id="forgot-password" page="./ForgotPassword">Don't have an account?</a></p>
         </form>
       </div>
     </div>
-    {{-- <script src="../js/login.js"></script> --}}
+    <script src="https://kit.fontawesome.com/c2a1454648.js" crossorigin="anonymous"> </script>
 @endsection

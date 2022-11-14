@@ -28,102 +28,19 @@
             <h4>Huawei</h4>
             </div>
       <!--Display products section-->
+<div class="shop-container">
   <div class="product-div">
-
-        <div class="product-container">
+    @foreach($phones as $phone)
+        <div class="product-container" ">
+            <a class="overlay" href="{{ URL('/shop/product/'.$phone->id )}}"></a>
             <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
+                <a href="{{ URL('/shop/product/'.$phone->id )}}"><img src="{{$phone->tempUrl}}" width="auto" height="190" style="vertical-align:top; horizontal-align: center;" ></a>
             </div>
-            <div class="product-name"><h5>Iphone 13</h5></div>
+            <div class="product-name"><h5 style="color:black;">{{$phone->title}}, {{$phone->ramsize}}Gb RAM, {{$phone->romSize}}Gb ROM</h5></div>
+            <div class="product-name"><h5 style="color:red;">{{$phone->price}}$</h5></div>
         </div>
-
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-            <div class="product-name"><h5>Iphone 13</h5></div>
-        </div>
-
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-            <div class="product-name"><h5>Iphone 13</h5></div>
-        </div>
-
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-            <div class="product-name"><h5>Iphone 13</h5></div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-            <div class="product-name"><h5>Iphone 13 Pro Max Universal Unlimited Extra Only 5 left</h5></div>
-        </div> <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        <div class="product-container">
-            <div class="product-photo">
-                <img src="https://media.croma.com/image/upload/v1664009482/Croma%20Assets/Communication/Mobiles/Images/243461_0_tzq0y4.png" width="190" height="190" style="vertical-align:top">
-            </div>
-        </div>
-        
-        
+    @endforeach
+</div>   
   </div>
       <script src="https://kit.fontawesome.com/c2a1454648.js" crossorigin="anonymous"> </script>
       <script type="text/javascript" src="{{asset('js/categoriesSticky.js')}}"></script>

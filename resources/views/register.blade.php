@@ -28,5 +28,5 @@
         </form>
       </div>
     </div>
-    {{-- <script src="../js/login.js"></script> --}}
+    <script src="https://kit.fontawesome.com/c2a1454648.js" crossorigin="anonymous"> </script>
 @endsection
