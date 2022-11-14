@@ -9,18 +9,37 @@
         </div>
         <div class="modal-body">
           <form action="?id={{$phone->id}}" method="post">
-              <div class="form-group">
-                      <input type="text" class="form-control" name="title" value="" placeholder="Title">
-                  </div>
-                  <div class="form-group">
-                      <input type="text" class="form-control" name="text" value="" placeholder="Text">
-                  </div>
-                  <div class="form-group">
-                      <input type="text" class="form-control" name="category" value="" placeholder="Category">
-                  </div>
-              <div class="form-group">
-                      <input type="text" class="form-control" name="image" value="{{$phone->id}}" placeholder="Image">
-                  </div>
+            @csrf
+            <div class="form-group">
+              <input type="text" class="form-control" name="name" value="{{$phone->title}}" placeholder="Phone Name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="price" value="{{$phone->price}}" placeholder="Price">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="color" value="{{$phone->color}}" placeholder="Color">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="tempUrl" value="{{$phone->tempUrl}}" placeholder="Image Url">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="factory" value="{{$phone->producedBy}}" placeholder="Produced By">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="prodYear" value="{{$phone->prodYear}}" placeholder="Production Year">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="ramSize" value="{{$phone->ramSize}}" placeholder="RAM Size">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="romSize" value="{{$phone->romSize}}" placeholder="ROM Size">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="mainCamera" value="{{$phone->mainCameraPx}}" placeholder="Main Camera Px">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="secondCamera" value="{{$phone->frontCameraPx}}" placeholder="Frontal Camera Px">
+            </div>
             </div>
               <div class="modal-footer">
                   <button type="submit" name="edit-submit" class="btn btn-primary">Refresh</button>

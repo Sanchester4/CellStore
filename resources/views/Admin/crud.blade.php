@@ -9,6 +9,11 @@
 </head>
 <body>
 	<div class="container">
+		@if ($message = Session::get('message'))
+              <div class="alert alert-success">
+                  <p>{{ $message }}</p>
+              </div>
+              @endif
 		<div class="row">
 			<div class="col mt-1">
 				<button class="btn btn-success mt-2" data-toggle="modal" data-target="#Modal"><i class="fa fa-plus"></i></button>
@@ -54,18 +59,37 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
-                  <form action="" method="post">
+                  <form action="/addPhone" method="post">
+					@csrf
 	        	<div class="form-group">
-	        		<input type="text" class="form-control" name="title" value="" placeholder="Title">
+	        		<input type="text" class="form-control" name="name" value="" placeholder="Phone Name">
 	        	</div>
 	        	<div class="form-group">
-	        		<input type="text" class="form-control" name="text" value="" placeholder="Text">
+	        		<input type="text" class="form-control" name="price" value="" placeholder="Price">
 	        	</div>
 	        	<div class="form-group">
-	        		<input type="text" class="form-control" name="category" value="" placeholder="Category">
+	        		<input type="text" class="form-control" name="color" value="" placeholder="Color">
 	        	</div>
 				<div class="form-group">
-	        		<input type="text" class="form-control" name="image" value="" placeholder="Image">
+	        		<input type="text" class="form-control" name="tempUrl" value="" placeholder="Image Url">
+	        	</div>
+				<div class="form-group">
+	        		<input type="text" class="form-control" name="factory" value="" placeholder="Produced By">
+	        	</div>
+				<div class="form-group">
+	        		<input type="text" class="form-control" name="prodYear" value="" placeholder="Production Year">
+	        	</div>
+				<div class="form-group">
+	        		<input type="text" class="form-control" name="ramSize" value="" placeholder="RAM Size">
+	        	</div>
+				<div class="form-group">
+	        		<input type="text" class="form-control" name="romSize" value="" placeholder="ROM Size">
+	        	</div>
+				<div class="form-group">
+	        		<input type="text" class="form-control" name="mainCamera" value="" placeholder="Main Camera Px">
+	        	</div>
+				<div class="form-group">
+	        		<input type="text" class="form-control" name="secondCamera" value="" placeholder="Frontal Camera Px">
 	        	</div>
 	      </div>
 	      <div class="modal-footer">
@@ -77,38 +101,7 @@
 	  </div>
 	</div>
 
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content shadow">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit a data row with value id {{$phone->id}}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form action="?id={{$phone->id}}" method="post">
-                  <div class="form-group">
-                          <input type="text" class="form-control" name="title" value="" placeholder="Title">
-                      </div>
-                      <div class="form-group">
-                          <input type="text" class="form-control" name="text" value="" placeholder="Text">
-                      </div>
-                      <div class="form-group">
-                          <input type="text" class="form-control" name="category" value="" placeholder="Category">
-                      </div>
-                  <div class="form-group">
-                          <input type="text" class="form-control" name="image" value="{{$phone->id}}" placeholder="Image">
-                      </div>
-                </div>
-                  <div class="modal-footer">
-                      <button type="submit" name="edit-submit" class="btn btn-primary">Refresh</button>
-                  </div>
-              </form>	
-            </div>
-          </div>
-        </div>
-      </div>
+    
       <div class="d-flex justify-content-center">
         {!! $phones->links() !!}
     </div>   

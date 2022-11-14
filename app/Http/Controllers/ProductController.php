@@ -35,7 +35,7 @@ class ProductController extends Controller
     }
 
     public function showProducts(){
-        $phones = Phone::simplePaginate(3);  
+        $phones = Phone::simplePaginate(6);  
         return view ('Admin.crud', compact('phones'));
     }
 
