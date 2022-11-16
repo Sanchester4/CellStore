@@ -109,6 +109,20 @@
                     </div>
                 </div>
             </div>
+            @if ($message = Session::get('message'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+        @endif
+            <form action="{{route('addToCart')}}" method="post">
+                @csrf
+                <input type="hidden"  name="product_id" value="{{$item->id}}">
+                <input type="hidden"  name="quantity" value="1">
+                <input type="submit" class="btn btn-primary shop-button" value="Add to Cart">
+                {{-- <div class="col-xs-6"> <button class="btn btn-primary shop-button">Add to Cart</button> <button type="button" class="btn btn-success shop-button">Buy Now</button>   --}}
+                    {{-- <div class="product_fav"><i class="fas fa-heart"></i></div> --}}
+                {{-- </div> --}}
+            </form> 
             <div class="row row-underline">
                 <div class="col-md-6"> <span class=" deal-text">Specifications</span> </div>
                 <div class="col-md-6"> <a href="#" data-abc="true"> <span class="ml-auto view-all"></span> </a> </div>

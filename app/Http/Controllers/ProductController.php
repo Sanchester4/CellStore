@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Phone;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,8 +19,6 @@ class ProductController extends Controller
 {
     public function storeNewPhone(Request $request){
         $phone = new Phone;
-        // $phone->id = $request ->id; 
-        // $phone->product_id_phone = $request ->id; 
         $phone->title = $request->name;
         $phone->price = $request->price;
         $phone->producedBy = $request->factory;
@@ -35,31 +34,19 @@ class ProductController extends Controller
     }
 
     public function updatePhone(Request $request){
-        // DB::table('phones')
-        //            ->where('id', $request->id)
-        //            ->update(['title' => $request->name], ['price' =>  $request->price],
-        //                     ['producedBy' =>  $request->factory],
-        //                     ['prodYear' =>  $request->prodYear],
-        //                     ['color' =>  $request->price],
-        //                     ['tempUrl' =>  $request->price],
-        //                     ['ramSize' =>  $request->price], 
-        //                     ['romsize' =>  $request->price],
-        //                     ['mainCameraPx' =>  $request->price],
-        //                     ['frontCameraPx' =>  $request->price]);
-
-
-        $phone = Phone ::where('id', '=', $request->id)->get();
-        $phone->title = $request->name;
-        $phone->price = $request->price;
-        $phone->producedBy = $request->factory;
-        $phone->prodYear = $request->prodYear;
-        $phone->color = $request->color;
-        $phone->tempUrl = $request->tempUrl;
-        $phone->ramSize = $request->ramSize;
-        $phone->romSize = $request->romSize;
-        $phone->mainCameraPx = $request->mainCamera;
-        $phone->frontCameraPx = $request->secondCamera;
-        $phone->save();
+        $phone = Phone::where('id',  $request->id)->first();
+        DB::table('phones')
+                   ->where('id', $request->id)
+                   ->update(['title' => $request->title,
+                             'tempUrl' => $request->tempUrl,
+                             'price' => $request->price,
+                             'color' => $request->color,
+                             'producedBy' => $request->producedBy,
+                             'prodYear' => $request->prodYear,
+                             'ramSize' => $request->ramSize,
+                             'romSize' => $request->romSize,
+                             'mainCameraPx' => $request->mainCameraPx,
+                             'frontCameraPx' => $request->frontCameraPx]);
         return redirect()->back()->with('message','The product has been updated successfully.');
     }
 
@@ -77,14 +64,9 @@ class ProductController extends Controller
 
     public function getProductById($id){
         $phone = Phone ::where('id', '=', $id)->get();
-        return view ('singleProductPage', compact('phone'));
+        $carts = Cart::all();
+        return view ('singleProductPage', compact('phone','carts'));
     }
-    
-
-    // public function getProduct(Request $request){
-    //     $founds = Phone::where('id', $request->id);
-    //     return view ('Admin.crud', compact('founds'));
-    // }
-
-
 }
+
+?>

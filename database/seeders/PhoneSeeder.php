@@ -47,3 +47,5 @@ class PhoneSeeder extends Seeder
 
     }
 }
+
+?>

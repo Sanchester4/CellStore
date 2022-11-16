@@ -9,3 +9,5 @@ class Phone extends Model
 {
     use HasFactory;
 }
+
+?>

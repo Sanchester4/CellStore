@@ -290,8 +290,10 @@
   margin-top: 25px;
   margin-left: 25px;
   background-color: #000000;
-  background: radial-gradient(#ffffff, #ddcefd, #ffffff);
+  background: white;
   justify-items: center;
+  border-style: double;
+  border-color:rgb(240, 230, 244)
 }
 
 .product-photo{

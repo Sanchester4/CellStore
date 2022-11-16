@@ -54,7 +54,8 @@ Route::get('/', function () {
     Route::get('/shop/product/{id}', [ProductController::class, 'getProductById'])->name('getProductById'); 
 
     Route::get('/cart', [CartController::class, 'getCart'])->name('getCart');
-    Route::post('/addToCart', [ClientController::class, 'addToCart'])->name('addToCart');
+    Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::post('/deleteFromCart', [CartController::class, 'deleteFromCart'])->name('deleteFromCart');
 
 
 
@@ -76,7 +77,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('/addPhone', [ProductController::class, 'storeNewPhone']);
     Route::get('/crud', [ProductController::class, 'showProducts'])->name('getProducts');
     Route::post('/delete/{id}', [AdminController::class, 'deletePhone'])->name('deleteProduct');
-    Route::post('/updatePhone', [ProductController::class, 'updatePhone']);
+    Route::put('/updatePhone', [ProductController::class, 'updatePhone'])->name('updatePhone');
 
 
 });

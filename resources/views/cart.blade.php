@@ -23,18 +23,20 @@
                     class="fas fa-angle-down mt-1"></i></a></p>
             </div>
           </div>
-  
+         @foreach($carts as $cart)
+         @foreach($phones as $phone)
+         @if($phone->id == $cart->product_id)
           <div class="card rounded-3 mb-4">
             <div class="card-body p-4">
               <div class="row d-flex justify-content-between align-items-center">
                 <div class="col-md-2 col-lg-2 col-xl-2">
                   <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                    src="{{ $phone->tempUrl}}"
                     class="img-fluid rounded-3" alt="Cotton T-shirt">
                 </div>
                 <div class="col-md-3 col-lg-3 col-xl-3">
-                  <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                  <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+                  <p class="lead fw-normal mb-2">{{$phone->title}}</p>
+                  <p><span class="text-muted">Color: </span>{{$phone->color}}</p>
                 </div>
                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                   <button class="btn btn-link px-2"
@@ -42,7 +44,7 @@
                     <i class="fas fa-minus"></i>
                   </button>
   
-                  <input id="form1" min="0" name="quantity" value="2" type="number"
+                  <input id="form1" min="0" name="quantity" value="{{$cart->quantity}}" type="number"
                     class="form-control form-control-sm" />
   
                   <button class="btn btn-link px-2"
@@ -51,122 +53,24 @@
                   </button>
                 </div>
                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                  <h5 class="mb-0">$499.00</h5>
+                  <h5 class="mb-0">{{$phone->price}}$</h5>
                 </div>
-                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                  <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="card rounded-3 mb-4">
-            <div class="card-body p-4">
-              <div class="row d-flex justify-content-between align-items-center">
-                <div class="col-md-2 col-lg-2 col-xl-2">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                    class="img-fluid rounded-3" alt="Cotton T-shirt">
-                </div>
-                <div class="col-md-3 col-lg-3 col-xl-3">
-                  <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                  <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
-                </div>
-                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                  <button class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                    <i class="fas fa-minus"></i>
-                  </button>
-  
-                  <input id="form1" min="0" name="quantity" value="2" type="number"
-                    class="form-control form-control-sm" />
-  
-                  <button class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                  <h5 class="mb-0">$499.00</h5>
-                </div>
-                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                  <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                <div class="col-md-2">
+                  <form action="{{route('deleteFromCart')}}" method="post">
+                    @csrf
+                    <input type="hidden"  name="product_id" value="{{$phone->id}}">
+                    <input type="submit" class="btn btn-danger" value="Delete from Cart" style="margin-right: -205px;">
+                  {{-- <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a> --}}
+
+                </form>
                 </div>
               </div>
             </div>
           </div>
-  
-          <div class="card rounded-3 mb-4">
-            <div class="card-body p-4">
-              <div class="row d-flex justify-content-between align-items-center">
-                <div class="col-md-2 col-lg-2 col-xl-2">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                    class="img-fluid rounded-3" alt="Cotton T-shirt">
-                </div>
-                <div class="col-md-3 col-lg-3 col-xl-3">
-                  <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                  <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
-                </div>
-                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                  <button class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                    <i class="fas fa-minus"></i>
-                  </button>
-  
-                  <input id="form1" min="0" name="quantity" value="2" type="number"
-                    class="form-control form-control-sm" />
-  
-                  <button class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                  <h5 class="mb-0">$499.00</h5>
-                </div>
-                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                  <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="card rounded-3 mb-4">
-            <div class="card-body p-4">
-              <div class="row d-flex justify-content-between align-items-center">
-                <div class="col-md-2 col-lg-2 col-xl-2">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                    class="img-fluid rounded-3" alt="Cotton T-shirt">
-                </div>
-                <div class="col-md-3 col-lg-3 col-xl-3">
-                  <p class="lead fw-normal mb-2">Basic T-shirt</p>
-                  <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
-                </div>
-                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                  <button class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                    <i class="fas fa-minus"></i>
-                  </button>
-  
-                  <input id="form1" min="0" name="quantity" value="2" type="number"
-                    class="form-control form-control-sm" />
-  
-                  <button class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                  <h5 class="mb-0">$499.00</h5>
-                </div>
-                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                  <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endif
+          @endforeach
+@endforeach
+        
   
           <div class="card mb-4">
             <div class="card-body p-4 d-flex flex-row">
