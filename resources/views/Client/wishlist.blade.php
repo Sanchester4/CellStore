@@ -17,13 +17,13 @@
         <div class="col-10">
   
           <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+            <h3 class="fw-normal mb-0 text-black">Wish List</h3>
             <div>
               <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
                     class="fas fa-angle-down mt-1"></i></a></p>
             </div>
           </div>
-         @foreach($carts as $cart)
+          @foreach($carts as $cart)
          @foreach($phones as $phone)
          @if($cart->product_id == $phone->id)
           <div class="card rounded-3 mb-4">
@@ -38,28 +38,14 @@
                   <p class="lead fw-normal mb-2">{{$phone->title}}</p>
                   <p><span class="text-muted">Color: </span>{{$phone->color}}</p>
                 </div>
-                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                  <button class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                    <i class="fas fa-minus"></i>
-                  </button>
-  
-                  <input id="form1" min="0" name="quantity" value="{{$cart->quantity}}" type="number"
-                    class="form-control form-control-sm" />
-  
-                  <button class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                  <h5 class="mb-0">{{$phone->price}}$</h5>
+                  <h5 class="mb-0">Price:  {{$phone->price}}$</h5>
                 </div>
                 <div class="col-md-2">
-                  <form action="{{route('deleteFromCart')}}" method="post">
+                  <form action="{{route('deleteFromWishList')}}" method="post">
                     @csrf
                     <input type="hidden"  name="product_id" value="{{$phone->id}}">
-                    <input type="submit" class="btn btn-danger" value="Delete from Cart" style="margin-right: -205px;">
+                    <input type="submit" class="btn btn-danger" value="Delete from Wish List" style="margin-right: -205px;">
                   {{-- <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a> --}}
 
                 </form>
@@ -70,24 +56,6 @@
           @endif
           @endforeach
 @endforeach
-        
-  
-          <div class="card mb-4">
-            <div class="card-body p-4 d-flex flex-row">
-              <div class="form-outline flex-fill">
-                <input type="text" id="form1" class="form-control form-control-lg" />
-                <label class="form-label" for="form1">Discound code</label>
-              </div>
-              <button type="button" class="btn btn-outline-warning btn-lg ms-3">Apply</button>
-            </div>
-          </div>
-  
-          <div class="card">
-            <div class="card-body">
-              <a href="{{ route('getCheckout') }}" class="btn btn-warning btn-block btn-lg">Proceed to Pay</a>
-              {{-- <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button> --}}
-            </div>
-          </div>
   
         </div>
       </div>

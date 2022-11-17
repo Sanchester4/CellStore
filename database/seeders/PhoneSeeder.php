@@ -45,6 +45,20 @@ class PhoneSeeder extends Seeder
             'frontCameraPx' => '12'
         ]);
 
+        $phone = Phone::create([
+            'id' => '3',
+            'title' => 'Samsung A30',
+            'tempUrl' => 'https://cdn.shopify.com/s/files/1/0181/5849/products/Galaxy_A50.png?v=1559762252',
+            'producedBY' => 'Samsung',
+            'prodYear' => '2021',
+            'price' => '150',
+            'color' => 'Blue',
+            'ramSize' => '4',
+            'romSize' => '64',
+            'mainCameraPx' =>'48',
+            'frontCameraPx' => '16'
+        ]);
+
     }
 }
 

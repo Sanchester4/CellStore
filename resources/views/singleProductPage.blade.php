@@ -60,51 +60,35 @@
                             </ol>
                         </nav>
                         <div class="product_name">{{$item->title}} {{$item->color}}, {{$item->ramSize}}Gb RAM, {{$item->romSize}}Gb ROM </div>
-                        <div> <span class="product_price">$ {{$item->price}}</span> <strike class="product_discount"> <span style='color:black'>$ 2,000<span> </strike> </div>
-                        <div> <span class="product_saved">You Saved:</span> <span style='color:black'>$ 2,000<span> </div>
+                        <div> <span class="product_price">$ {{$item->price}}</span> <strike class="product_discount"> <span style='color:black'>$ {{(((($item->price)/100)*15)+$item->price)}}<span> </strike> </div>
                         <br>
                         <div> <span class="product_info">Warranty: 6 months warranty<span><br> <span class="product_info">7 Days easy return policy<span><br> <span class="product_info">7 Days easy return policy<span><br> <span class="product_info">In Stock: 25 units sold this week<span> </div>
-                        <div>
+                            <form action="{{route('addToCart')}}" method="post" >
+                            <div style="margin-top: 20px;"> 
+                            <div class="col-xs-6">
+                                <div class="form-group" style="padding-bottom:15px;">
+                                    {!! Form::label('quantity', 'Quantity:') !!}
+                                    {!! Form::text('quantity' ,null, array('placeholder' => '1','class' => 'form-control')) !!}
+                                </div>
+                            </div>
+        
+                                @csrf
+                                <input type="hidden"  name="product_id" value="{{$item->id}}">
+                                <input type="submit" class="btn btn-primary shop-button" value="Add to Cart">
+                            </form>
+                            <form action="{{route('addToWishList')}}" method="post" >
+                            @csrf
+                            <div style="margin-top: -47px; margin-left: 99px;"> 
+                                <input type="hidden"  name="product_id" value="{{$item->id}}">
+                                <a href="{{ route('getCheckout') }}" class="btn btn-warning btn-block btn-lg">Buy Now</a>
+                                    <div class="product_fav"><input type="submit" class="btn btn-primary shop-button" value="Add to Wish List"></div>
+                                </div>
+                            </form>
                             <div class="row">
-                                <div class="col-md-5">
-                                    <div class="br-dashed">
-                                        <div class="row">
-                                            <div class="col-md-3 col-xs-3"> <img src="https://img.icons8.com/color/48/000000/price-tag.png"> </div>
-                                            <div class="col-md-9 col-xs-9">
-                                                <div class="pr-info"> <span class="break-all">Get 5% instant discount + 10X rewards @ RENTOPC</span> </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="col-md-5"> 
                                 </div>
                                 <div class="col-md-7"> </div>
-                            </div>
-                            <div class="row" style="margin-top: 15px;">
-                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">RAM Options</span><br> <button class="btn btn-primary btn-sm">4 GB</button> <button class="btn btn-primary btn-sm">8 GB</button> <button class="btn btn-primary btn-sm">16 GB</button> </div>
-                                <div class="col-xs-6" style="margin-left: 55px;"> <span class="product_options">Storage Options</span><br> <button class="btn btn-primary btn-sm">500 GB</button> <button class="btn btn-primary btn-sm">1 TB</button> </div>
-                            </div>
-                        </div>
-                        <hr class="singleline">
-                        <div class="order_info d-flex flex-row">
-                            <form action="#">
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6" style="margin-left: 13px;">
-                                <div class="product_quantity"> <span>QTY: </span> <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                                    <div class="quantity_buttons">
-                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
-                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <form action="{{route('addToCart')}}" method="post">
-                            @csrf
-                            <input type="hidden" value="1" name="product_id">
-                            <input type="submit" class="btn btn-primary shop-button" value="Add to Cart">
-                            {{-- <input type="hidden" value="{{$item->id}}" name="product_id"> --}}
-                            {{-- <div class="col-xs-6"> <button class="btn btn-primary shop-button">Add to Cart</button> <button type="button" class="btn btn-success shop-button">Buy Now</button>   --}}
-                                {{-- <div class="product_fav"><i class="fas fa-heart"></i></div> --}}
-                            {{-- </div> --}}
-                        </form> 
+                            </div>  
                         </div>
                     </div>
                 </div>
@@ -114,15 +98,7 @@
             <p>{{ $message }}</p>
         </div>
         @endif
-            <form action="{{route('addToCart')}}" method="post">
-                @csrf
-                <input type="hidden"  name="product_id" value="{{$item->id}}">
-                <input type="hidden"  name="quantity" value="1">
-                <input type="submit" class="btn btn-primary shop-button" value="Add to Cart">
-                {{-- <div class="col-xs-6"> <button class="btn btn-primary shop-button">Add to Cart</button> <button type="button" class="btn btn-success shop-button">Buy Now</button>   --}}
-                    {{-- <div class="product_fav"><i class="fas fa-heart"></i></div> --}}
-                {{-- </div> --}}
-            </form> 
+
             <div class="row row-underline">
                 <div class="col-md-6"> <span class=" deal-text">Specifications</span> </div>
                 <div class="col-md-6"> <a href="#" data-abc="true"> <span class="ml-auto view-all"></span> </a> </div>

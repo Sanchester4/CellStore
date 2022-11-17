@@ -58,7 +58,7 @@ class ProductController extends Controller
 
     public function getProductsShop(){
         $user = Auth::user();
-        $phones = Phone::simplePaginate(6);  
+        $phones = Phone::simplepaginate(6);  
         return view ('productPage', compact('phones'));
     }
 

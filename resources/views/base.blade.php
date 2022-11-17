@@ -48,6 +48,11 @@
         @else
             {{-- {{ Auth::user()->name }} --}}
             <li class="navbar_item">
+              <a href="{{ route('getWishlist') }}" class="navbar__links" id="contac-page" style="margin-top:-15px;"
+                ><i class="fa-solid fa-heart"></i> Wishlist</a
+              >
+            </li>
+            <li class="navbar_item">
                 <a href="{{ route('profile') }}" class="navbar__links" id="contac-page" style="margin-top:-15px;"
                   ><i class="fa fa-user"></i> Profile</a
                 >

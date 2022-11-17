@@ -85,14 +85,9 @@
           <span class="brand-item"><img src ="{{asset('/images/apple.png')}}" width="55%" height="auto"></span>
           <span class="brand-item" style="margin-top: 30px;"><img src ="{{asset('/images/huawei.png')}}" width="40%" height="auto"></span>
           <span class="brand-item" style="margin-top: -50px;"><img src ="{{asset('/images/samsung.png')}}" width="80%" height="auto"></span>
-
-          {{-- </div class="brand-item"><img src ="{{asset('/images/apple.png')}}" width="15%" height="auto"></div> --}}
-        {{-- </div class="brand-item"><img src ="{{asset('/images/huawei.png')}}" width="5%" height="5%"></div> --}}
         </div class="brand-item"></div>
        </div>
     </div>
-    {{-- <div class="footer">
-    </div> --}}
   </div>
       <script src="https://kit.fontawesome.com/c2a1454648.js" crossorigin="anonymous"></script>
 @endsection

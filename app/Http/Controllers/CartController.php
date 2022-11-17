@@ -18,7 +18,8 @@ use App\Support\Collection;
 class CartController extends Controller
 {
     public function getCart(){
-        $carts = Cart::all();
+        $carts = Cart::where('user_id', auth()->id())->get();
+        // dd($carts);
         $phones = Phone::all();
         return view ('cart',compact('carts', 'phones'));
     }
@@ -32,31 +33,42 @@ class CartController extends Controller
 
     function addToCart(Request $request)
      {
-            if(empty($request->user_id))
+        // dd($request);
+        $this->validate(request(), [
+            'quantity' => 'required',
+        ]);
+            if(empty(auth()->id()))
             {
                 return redirect()->route('login');
             }
-            else{
-            $found = Cart::where('product_id', $request->product_id) ->first();
-            if(empty($found->id))
+
+            $found = Cart::where('user_id', auth()->id())->get();
+            $itIs = false;
+            foreach($found as $item)
+            {
+                if($item->product_id == $request->product_id)
+                {
+                    $itIs = true;
+                    DB::table('cart')
+                ->where('product_id', $request->product_id)
+                ->update(array(
+                    'quantity' => $request->quantity,
+                ));
+                }
+                else{
+                    $itIsNot = true;
+                }
+            }
+            if(empty($item->user_id) || $itIs == false)
             {
                 $cart = new Cart();
                 $cart->user_id = auth()->id();
                 $cart->product_id = $request->product_id;
-                $cart->quantity = $request->quantity ;
+                $cart->quantity = $request->quantity;
                 $cart->save();
                 return redirect()->back()->with('message','The product has been added to the Cart.');
             }
-            else {
-                DB::table('cart')
-                ->where('product_id', $request->product_id)
-                ->update(array(
-                    'quantity' => DB::raw('quantity + 1'),
-                ));
                 return redirect()->back()->with('message','The product has been updated to the Cart.');
             }  
-        }
-     }
 }
-
 ?>

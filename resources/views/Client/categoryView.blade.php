@@ -35,20 +35,17 @@
       <!--Display products section-->
 <div class="shop-container">
   <div class="product-div">
-    @foreach($phones as $phone)
+    @foreach($phones as $item)
         <div class="product-container" ">
-            <a class="overlay" href="{{ URL('/shop/product/'.$phone->id )}}"></a>
+            <a class="overlay" href="{{ URL('/shop/product/'.$item->id )}}"></a>
             <div class="product-photo">
-                <a href="{{ URL('/shop/product/'.$phone->id )}}"><img src="{{$phone->tempUrl}}" width="auto" height="190" style="vertical-align:top; horizontal-align: center;" ></a>
+                <a href="{{ URL('/shop/product/'.$item->id )}}"><img src="{{$item->tempUrl}}" width="auto" height="190" style="vertical-align:top; horizontal-align: center;" ></a>
             </div>
-            <div class="product-name"><h5 style="color:black;">{{$phone->title}}</h5></div>
-            <div class="product-name"><h5 style="color:red;">$ {{$phone->price}}</h5></div>
+            <div class="product-name"><h5 style="color:black;">{{$item->title}}</h5></div>
+            <div class="product-name"><h5 style="color:red;">$ {{$item->price}}</h5></div>
         </div>
     @endforeach
 </div>   
-<div class="d-flex justify-content-center" style="margin-top:20px;">
-    {!! $phones->links() !!}
-</div>
   </div>
       <script src="https://kit.fontawesome.com/c2a1454648.js" crossorigin="anonymous"> </script>
       <script type="text/javascript" src="{{asset('js/categoriesSticky.js')}}"></script>
