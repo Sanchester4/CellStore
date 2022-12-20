@@ -56,9 +56,6 @@ Route::get('/', function () {
     Route::get('/cart', [CartController::class, 'getCart'])->name('getCart');
     Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
     Route::post('/deleteFromCart', [CartController::class, 'deleteFromCart'])->name('deleteFromCart');
-    Route::get('/category/Apple', [ClientController::class, 'getByCategoryApple'])->name('getByCategoryApple');
-    Route::get('/category/Samsung', [ClientController::class, 'getByCategorySamsung'])->name('getByCategorySamsung');
-    Route::get('/category/Huawei', [ClientController::class, 'getByCategoryHuawei'])->name('getByCategoryHuawei');
 
 
 
@@ -73,6 +70,9 @@ Route::group(['middleware' => ['role:user']], function () {
     Route::post('/addToWishList', [ClientController::class, 'addToWishList'])->name('addToWishList');
     Route::get('/checkout', [ClientController::class, 'getCheckout'])->name('getCheckout');
     Route::post('/addOrder', [ClientController::class, 'addOrder'])->name('addOrder');
+    Route::get('/category/Apple', [ClientController::class, 'getByCategoryApple'])->name('getByCategoryApple');
+    Route::get('/category/Samsung', [ClientController::class, 'getByCategorySamsung'])->name('getByCategorySamsung');
+    Route::get('/category/Huawei', [ClientController::class, 'getByCategoryHuawei'])->name('getByCategoryHuawei');
 });
 
 Route::group(['middleware' => ['role:admin']], function () {
