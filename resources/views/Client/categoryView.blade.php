@@ -45,7 +45,7 @@
             <div class="product-name"><h5 style="color:red;">$ {{$item->price}}</h5></div>
         </div>
     @endforeach
-</div>   
+</div>  
   </div>
       <script src="https://kit.fontawesome.com/c2a1454648.js" crossorigin="anonymous"> </script>
       <script type="text/javascript" src="{{asset('js/categoriesSticky.js')}}"></script>
