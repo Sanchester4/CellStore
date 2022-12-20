@@ -43,6 +43,7 @@ Route::get('/', function () {
     Route::get('/profile', [ClientController::class, 'getProfile'])->name('profile');
     //Route to call the logout function 
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    //Route to get all products
     Route::get('shop', [ProductController::class, 'getProductsShop'])->name('getProductsShop');
 
     Route::get('/product', function () {
