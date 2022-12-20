@@ -81,6 +81,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     //::get('/crud', [AdminController::class, 'dashboard'])->name('crud');
     Route::post('/addPhone', [ProductController::class, 'storeNewPhone']);
     Route::get('/crud', [ProductController::class, 'showProducts'])->name('getProducts');
+    //Route for delete the item phone
     Route::post('/delete/{id}', [AdminController::class, 'deletePhone'])->name('deleteProduct');
     Route::put('/updatePhone', [ProductController::class, 'updatePhone'])->name('updatePhone');
 
