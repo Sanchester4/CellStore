@@ -118,7 +118,7 @@ class ClientController extends Controller
         function getByCategoryHuawei()
         {
             $phones = Phone::where('producedBy', 'Huawei')->get();
-            return view ('productPage', compact('phones'));
+            return view ('Client.categoryView', compact('phones'));
         }
 }
 
