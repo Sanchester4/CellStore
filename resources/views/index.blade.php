@@ -25,12 +25,20 @@
               <a class="slide__next" href="#slides__3" title="Next"></a>
             </div>
             <div id="slides__3" class="slide">
-              <span class="slide__text">3</span>
+              <span class="slide__text"></span>
+              <audio controls autoplay muted>
+                <source src="{{asset('audio/0125. Imagination - AShamaluevMusic.mp3')}}" type="audio/ogg">
+                <source src="horse.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+              </audio>
               <a class="slide__prev" href="#slides__2" title="Prev"></a>
               <a class="slide__next" href="#slides__4" title="Next"></a>
             </div>
             <div id="slides__4" class="slide">
-              <span class="slide__text">4</span>
+              <span class="slide__text"></span>
+              <iframe width="800" height="500"
+src="https://www.youtube.com/embed/tgbNymZ7vqY">
+</iframe>
               <a class="slide__prev" href="#slides__3" title="Prev"></a>
               <a class="slide__next" href="#slides__1" title="Prev"></a>
             </div>

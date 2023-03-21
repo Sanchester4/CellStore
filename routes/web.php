@@ -43,6 +43,7 @@ Route::get('/', function () {
     Route::get('/profile', [ClientController::class, 'getProfile'])->name('profile');
     //Route to call the logout function 
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    //Route to get all products
     Route::get('shop', [ProductController::class, 'getProductsShop'])->name('getProductsShop');
 
     Route::get('/product', function () {
@@ -73,6 +74,8 @@ Route::group(['middleware' => ['role:user']], function () {
     Route::get('/category/Apple', [ClientController::class, 'getByCategoryApple'])->name('getByCategoryApple');
     Route::get('/category/Samsung', [ClientController::class, 'getByCategorySamsung'])->name('getByCategorySamsung');
     Route::get('/category/Huawei', [ClientController::class, 'getByCategoryHuawei'])->name('getByCategoryHuawei');
+    Route::get('/contact-form', [ClientController::class, 'getContactUsPage'])->name('getContactUsPage');
+    Route::post('/contact', 'ClientController@send_mail')->name('addContact');
 });
 
 Route::group(['middleware' => ['role:admin']], function () {

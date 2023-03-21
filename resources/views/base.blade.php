@@ -16,6 +16,7 @@
 
         <link rel="stylesheet" href="{{asset('css/app.css')}}" />
         <link rel="stylesheet" href="{{asset('css/singleProduct.css')}}" />
+        
     </head>
     <body>
             <!-- Navbar Section-->
@@ -57,6 +58,11 @@
                   ><i class="fa fa-user"></i> Profile</a
                 >
               </li>
+              <li class="navbar_item">
+                <a href="{{ route('getContactUsPage') }}" class="navbar__links" id="contac-page" style="margin-top:-15px;"
+                  >Contact Us</a
+                >
+              </li>  
             <form action="{{ route('logout') }}" method="post" style="display:contents">
                 @csrf
                 <button type="submit" class="btn btn-primary btn-block" style="text-size: 14px; margin-top:-15px;">Logout</button> 
