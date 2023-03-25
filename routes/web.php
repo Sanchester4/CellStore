@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ImageUploadController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,6 +88,11 @@ Route::group(['middleware' => ['role:admin']], function () {
     //Route for delete the item phone
     Route::post('/delete/{id}', [AdminController::class, 'deletePhone'])->name('deleteProduct');
     Route::put('/updatePhone', [ProductController::class, 'updatePhone'])->name('updatePhone');
-
-
+    //For adding an image
+    Route::get('/add-image',[ImageUploadController::class,'addImage'])->name('images.add');
+    //For storing an image
+    Route::post('/store-image',[ImageUploadController::class,'storeImage'])
+    ->name('images.store');
+    //For showing an image
+    Route::get('/view-image',[ImageUploadController::class,'viewImage'])->name('images.view');
 });

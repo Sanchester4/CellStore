@@ -35,10 +35,9 @@
               <a class="slide__next" href="#slides__4" title="Next"></a>
             </div>
             <div id="slides__4" class="slide">
-              <span class="slide__text"></span>
-              <iframe width="800" height="500"
-src="https://www.youtube.com/embed/tgbNymZ7vqY">
-</iframe>
+              <span class="slide__text" style=>              <iframe id="vp10N3e7" title="Video Player" width="800" height="500" frameborder="0" src="https://s3.amazonaws.com/embed.animoto.com/play.html?w=swf/production/vp1&e=1679736691&f=0N3e7uUz1PPO45IAMQpUSA&d=0&m=p&r=360p&volume=100&start_res=720p&i=m&asset_domain=s3-p.animoto.com&animoto_domain=animoto.com&options=" allowfullscreen></iframe>
+              </span>
+              {{-- <iframe id="vp10N3e7" title="Video Player" width="800" height="600" frameborder="0" src="https://s3.amazonaws.com/embed.animoto.com/play.html?w=swf/production/vp1&e=1679736691&f=0N3e7uUz1PPO45IAMQpUSA&d=0&m=p&r=360p&volume=100&start_res=720p&i=m&asset_domain=s3-p.animoto.com&animoto_domain=animoto.com&options=" allowfullscreen></iframe> --}}
               <a class="slide__prev" href="#slides__3" title="Prev"></a>
               <a class="slide__next" href="#slides__1" title="Prev"></a>
             </div>
