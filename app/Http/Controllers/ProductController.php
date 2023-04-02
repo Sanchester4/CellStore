@@ -52,13 +52,13 @@ class ProductController extends Controller
 
     public function showProducts(){
         $user = Auth::user();
-        $phones = Phone::simplePaginate(6);  
+        $phones = Phone::simplePaginate(12);  
         return view ('Admin.crud', compact('phones'));
     }
 
     public function getProductsShop(){
         $user = Auth::user();
-        $phones = Phone::simplepaginate(6);  
+        $phones = Phone::simplepaginate(12);  
         return view ('productPage', compact('phones'));
     }
 

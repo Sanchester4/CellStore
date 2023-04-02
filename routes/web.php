@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\SearchController;
+use App\Models\Phone;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +62,13 @@ Route::get('/', function () {
     Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
     Route::post('/deleteFromCart', [CartController::class, 'deleteFromCart'])->name('deleteFromCart');
 
+    Route::controller(SearchController::class)->group(function(){
+        Route::get('demo-search', 'index');
+        Route::get('autocomplete', 'autocomplete')->name('autocomplete');
+    });
+
+    Route::get('/searchProducts', [SearchController::class, 'index'])->name('phones');
+    Route::get('/Search', [SearchController::class, 'getSearchView'])->name('Search');
 
 
 Route::group(['middleware' => ['role:user']], function () {

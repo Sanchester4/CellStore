@@ -10,6 +10,9 @@ class Phone extends Model
     use HasFactory;
     public $table = "phones";
 
+    protected $fillable = [
+        'title'
+    ];
 }
 
 ?>

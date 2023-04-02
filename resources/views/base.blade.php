@@ -30,6 +30,33 @@
             <span class="bar"></span>
             <span class="bar"></span>
           </div>
+          <form action="{{ url('/searchProducts') }}" method="GET" role="search">
+            @csrf
+            <div class="input-group" style="margin-top: 10px;">
+                <span class="input-group-btn ">
+                <button class="btn btn-info" type="submit" title="Search projects">
+                  <span class="fas fa-search"></span>
+                </button>
+                </span>
+                <input type="text" id="search" name="search" placeholder="Search" class="form-control" value="{{ request('search') }}" required/>
+              
+              </form>
+              </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">
+        </script>
+        <script type="text/javascript">
+          var path = "{{ route('autocomplete') }}";
+        
+          $('#search').typeahead({
+            source:  function (query, process) {
+            return $.get(path, { term: query }, function (data) {
+              return process(data);
+          });
+      }
+  });
+        
+      </script>
           <ul class="navbar__menu">
             <li class="navbar__item">
               <a href="{{route('getProductsShop')}}" class="navbar__links" id="products-page" style="margin-top:-7px;"
