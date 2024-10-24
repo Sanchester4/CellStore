@@ -1,0 +1,6 @@
+projectKey=Sanchester4_CellStore_c937f7ab-9041-40cd-91a6-65eea7defed4
+serverUrl=http://localhost:9000
+serverVersion=10.7.0.96327
+dashboardUrl=http://localhost:9000/dashboard?id=Sanchester4_CellStore_c937f7ab-9041-40cd-91a6-65eea7defed4
+ceTaskId=524fdce4-248b-465d-b8b6-4c2497dc8ec0
+ceTaskUrl=http://localhost:9000/api/ce/task?id=524fdce4-248b-465d-b8b6-4c2497dc8ec0
